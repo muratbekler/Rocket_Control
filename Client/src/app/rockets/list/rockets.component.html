@@ -1,0 +1,140 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-10">
+                        <h4 class="card-title">Weather Status</h4>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-primary" (click)="weatherStatus()"> Weather Refresh</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <p class="card-text">
+                            Temperature: {{weather?.temperature}}
+                        </p>
+                        <p class="card-text">
+                            Humidity: {{weather?.humidity}}
+                        </p>
+                        <p class="card-text">
+                            Pressure: {{weather?.pressure}}
+                        </p>
+                        <p class="card-text">
+                            Time: {{weather?.time | date:'long'}}
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p class="card-text">
+                            Probability: {{weather?.precipitation?.probability }}
+                        </p>
+                        <p class="card-text">
+                            Rain: {{weather?.precipitation?.rain}}
+                        </p>
+                        <p class="card-text">
+                            Snow: {{weather?.precipitation?.snow}}
+                        </p>
+                        <p class="card-text">
+                            Sleet: {{weather?.precipitation?.sleet}}
+                        </p>
+                        <p class="card-text">
+                            Hail: {{weather?.precipitation?.hail}}
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p class="card-text">
+                            Direction: {{weather?.wind?.direction}}
+                        </p>
+                        <p class="card-text">
+                            Angle: {{weather?.wind?.angle}}
+                        </p>
+                        <p class="card-text">
+                            Speed: {{weather?.wind?.speed}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-10">
+                        <h4 class="card-title">Rocket</h4>
+                    </div>
+                    <div class="col-2 test-end">
+                        <button class="btn btn-primary" (click)="rocketList()"> Rocket Refresh</button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table align-middle text-nowrap">
+                        <thead>
+                            <tr>
+                                <th class="text-dark font-medium fs-3">Name</th>
+                                <th class="text-dark font-medium fs-3">Status</th>
+                                <th class="text-dark font-medium fs-3">Altitude</th>
+                                <th class="text-dark font-medium fs-3">Speed</th>
+                                <th class="text-dark font-medium fs-3">Acceleration</th>
+                                <th class="text-dark font-medium fs-3">Thrust</th>
+                                <th class="text-dark font-medium fs-3">Temperature</th>
+                                <th class="text-dark font-medium fs-4">#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let ts of rockets'>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="ms-3">
+                                            <h5 class="mb-0 font-medium">{{ts.model}}</h5>
+                                            <span class="text-muted">{{ts.id}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{ts.status}}
+                                </td>
+                                <td>
+                                    <h5 class="mb-0 fw-normal">{{ts.altitude}}</h5>
+                                </td>
+                                <td>
+                                    <h5 class="mb-0 fw-normal">{{ts.speed}}</h5>
+                                </td>
+                                <td>
+                                    <h5 class="mb-0 fw-normal">{{ts.acceleration}}</h5>
+                                </td>
+                                <td>
+                                    <h5 class="mb-0 fw-normal">{{ts.thrust}}</h5>
+                                </td>
+                                <td>
+                                    <h5 class="mb-0 fw-normal">{{ts.temperature}}</h5>
+                                </td>
+                                <td>
+                                    <div class="button-group">
+                                        <div class="d-inline-block" ngbDropdown>
+                                            <button
+                                                class=" btn btn-primary dropdown-toggle-icon-none d-flex align-items-center"
+                                                id="dropdown1" ngbDropdownToggle>
+                                                Action
+                                                <i class="feather-sm d-flex ms-2" name="chevron-down"></i>
+                                            </button>
+                                            <div ngbDropdownMenu aria-labelledby="dropdown1">
+                                                <button class="dropdown-item"
+                                                    (click)="action(ts, 'telemetry')">Telemety</button>
+                                                <button class="dropdown-item"
+                                                    (click)="action(ts, 'launch')">Launch</button>
+                                                <button class="dropdown-item"
+                                                    (click)="action(ts, 'deploy')">Deploy</button>
+                                                <button class="dropdown-item"
+                                                    (click)="action(ts, 'cancel')">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

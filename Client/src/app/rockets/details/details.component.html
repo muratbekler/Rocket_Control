@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>Telemety </h1>
+<div mat-dialog-content>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-4">
+          <p class="card-text">
+            Id: {{data?.id}}
+          </p>
+          <p class="card-text">
+            Model: {{data?.model}}
+          </p>
+          <p class="card-text">
+            Mass: {{data?.mass}}
+          </p>
+          <p class="card-text">
+            Status: {{data?.status }}
+          </p>
+          <p class="card-text">
+            Telemetry Host: {{data?.telemetry?.host }}
+          </p>
+          <p class="card-text">
+            Telemetry Port: {{data?.telemetry?.port }}
+          </p>
+        </div>
+        <div class="col-3">
+          <p class="card-text">
+            Altitude: {{data?.altitude }}
+          </p>
+          <p class="card-text">
+            Acceleration: {{data?.acceleration}}
+          </p>
+          <p class="card-text">
+            Thrust: {{data?.thrust}}
+          </p>
+          <p class="card-text">
+            Temperature: {{data?.temperature}}
+          </p>
+        </div>
+        <div class="col-5">
+          <p class="card-text">
+            Launched: {{data?.timestamps?.launched | date:'short'}}
+          </p>
+          <p class="card-text">
+            Deployed: {{data?.timestamps?.deployed | date:'short'}}
+          </p>
+          <p class="card-text">
+            Cancelled: {{data?.timestamps?.cancelled | date:'short'}}
+          </p>
+          <p class="card-text">
+            Failed: {{data?.timestamps?.failed | date:'short'}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close] cdkFocusInitial (click)="onOkClick()">Ok</button>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+</div>
